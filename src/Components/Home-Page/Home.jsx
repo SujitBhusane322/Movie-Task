@@ -25,16 +25,16 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div className="grid grid-cols-4 gap-4 px-4 py-4">
+      <div className="grid grid-cols-4 gap-4 px-4 py-4 ">
         {movies.map((movie,index) => (
-          <div className="mb-4 ">
-            <div key={index}>
+          <div className="mb-4 bg-white p-4 rounded-xl hover:bg-gray-300 border-4 hover:border-orange-500 " key={index}>
+            <div >
               <img src={`${baseUrl}${movie.poster_path}`} alt="" className="w-full h-full rounded-lg" />
             </div>
             <div>
-              <ul key={index} className="text-center text-2xl text-white">
-                <li>{movie.title}</li>
-                <li>Rating: {movie.vote_average}</li>
+              <ul key={index} className="text-center text-2xl ">
+                <li className="font-semibold">{movie.title}</li>
+                <li className="font-semibold">Rating: {movie.vote_average}</li>
                 <li>{}</li>
               </ul>
             </div>

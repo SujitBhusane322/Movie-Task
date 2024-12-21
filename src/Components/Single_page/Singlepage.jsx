@@ -5,7 +5,7 @@ import { imageUrl } from "../ContextData/Context";
 
 const Singlepage = () => {
   const [movie, setmovie] = useState({});
-  const [cast, setcast] = useState([])
+  const [cast, setcast] = useState([]);
   const { baseUrl } = useContext(imageUrl);
 
   useEffect(() => {
@@ -13,22 +13,22 @@ const Singlepage = () => {
       const res = await axios.get(
         "https://api.themoviedb.org/3/movie/845781%7D?api_key=c45a857c193f6302f2b5061c3b85e743&language=en-US"
       );
-    //   console.log(res.data);
+      //   console.log(res.data);
       setmovie(res.data);
     };
     fetchData();
   }, []);
 
-  useEffect(()=>{
-    const fetchCast=async () => {
-        const result=await axios.get('https://api.themoviedb.org/3/movie/845781/credits?api_key=c45a857c193f6302f2b5061c3b85e743&language=en-US')
-        console.log(result.data)
-        setcast(result.data.cast)
-        
-    }
-    fetchCast()
-
-  },[])
+  useEffect(() => {
+    const fetchCast = async () => {
+      const result = await axios.get(
+        "https://api.themoviedb.org/3/movie/845781/credits?api_key=c45a857c193f6302f2b5061c3b85e743&language=en-US"
+      );
+      console.log(result.data);
+      setcast(result.data.cast);
+    };
+    fetchCast();
+  }, []);
   return (
     <>
       <Header />
@@ -72,25 +72,25 @@ const Singlepage = () => {
         </div>
       </div>
       <div>
-            <h1 className="text-4xl font-bold text-white mb-4">CAST</h1>
-            <div className="grid grid-cols-6 gap-3">
-                {cast.map((actor) => (
-                    <div>
-                        <div key={actor.id}>
-                            
-                            <img src={`${baseUrl}${actor.profile_path}`} alt="" className="h-full w-full"/>
-                        </div>
-                    <ul   className="text-white text-xl ">
-                        <li >
-                        {actor.name}
-                    </li>
-                    <li>Charactor:{actor.character}</li>
-                    </ul>
-                    </div>
-                ))}
+        <h1 className="text-4xl font-bold text-white mb-4">CAST</h1>
+        <div className="grid grid-cols-6 gap-3">
+          {cast.map((actor) => (
+            <div className="bg-white p-4 rounded-xl hover:bg-gray-300 border-4 hover:border-orange-500">
+              <div key={actor.id}>
+                <img
+                  src={`${baseUrl}${actor.profile_path}`}
+                  alt=""
+                  className="h-full w-full"
+                />
+              </div>
+              <ul className=" text-xl font-semibold ">
+                <li>{actor.name}</li>
+                <li>Charactor:{actor.character}</li>
+              </ul>
             </div>
+          ))}
         </div>
-      
+      </div>
     </>
   );
 };
