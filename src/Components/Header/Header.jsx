@@ -14,13 +14,13 @@ const Header = () => {
   }
 
   return (
-    <>a
+    <>
       <div className="flex justify-around bg-gray-700 p-3 font-roboto">
         <Link to={'/'} className="text-4xl text-orange-500">MovieDb</Link>
         <div className="flex gap-5 items-center">
           <div>
             <div className="flex gap-4 list-none text-2xl  ">
-              <Link to="/" className="hover:text-blue-600  text-white">
+              <Link to="/popular" className="hover:text-blue-600  text-white">
                 Popular
               </Link>
               <Link to="/top-rated" className="hover:text-blue-600 text-white">

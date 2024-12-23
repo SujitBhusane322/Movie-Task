@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import axios from "axios";
 import { imageUrl } from "../ContextData/Context";
 import { useSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Search_page = () => {
   const [params] = useSearchParams();
@@ -30,7 +31,7 @@ const Search_page = () => {
     <Header />
     <div className="grid grid-cols-4 gap-4 px-4 py-4 ">
       {movies.map((movie,index) => (
-        <div className="mb-4 bg-white p-4 rounded-xl hover:bg-gray-300 border-4 hover:border-orange-500 " key={index}>
+        <Link to={`/single-page/${movie.id}`} className="mb-4 bg-white p-4 rounded-xl hover:bg-gray-300 border-4 hover:border-orange-500 " key={index}>
           <div >
             <img src={`${baseUrl}${movie.poster_path}`} alt="" className="w-full h-full rounded-lg" />
           </div>
@@ -41,7 +42,7 @@ const Search_page = () => {
               <li>{}</li>
             </ul>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   </>

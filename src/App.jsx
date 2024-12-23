@@ -12,6 +12,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/popular" element={<Home />} />
           <Route path="/top-rated" element={<Top_rated />} />
           <Route path="/upcoming-movies" element={<Upcoming_movies/>}/>
           <Route path='/single-page/:id' element={<Singlepage/>}/>
