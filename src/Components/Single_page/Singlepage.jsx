@@ -2,8 +2,12 @@ import React, { useEffect, useState, useContext } from "react";
 import Header from "../Header/Header";
 import axios from "axios";
 import { imageUrl } from "../ContextData/Context";
+import { useParams } from "react-router-dom";
 
 const Singlepage = () => {
+  const {id} = useParams();
+  if(!id) return;
+
   const [movie, setmovie] = useState({});
   const [cast, setcast] = useState([]);
   const { baseUrl } = useContext(imageUrl);
@@ -11,7 +15,7 @@ const Singlepage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get(
-        "https://api.themoviedb.org/3/movie/845781%7D?api_key=c45a857c193f6302f2b5061c3b85e743&language=en-US"
+        `https://api.themoviedb.org/3/movie/${id}?api_key=c45a857c193f6302f2b5061c3b85e743&language=en-US`
       );
       //   console.log(res.data);
       setmovie(res.data);
@@ -22,7 +26,7 @@ const Singlepage = () => {
   useEffect(() => {
     const fetchCast = async () => {
       const result = await axios.get(
-        "https://api.themoviedb.org/3/movie/845781/credits?api_key=c45a857c193f6302f2b5061c3b85e743&language=en-US"
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=c45a857c193f6302f2b5061c3b85e743&language=en-US`
       );
       console.log(result.data);
       setcast(result.data.cast);
