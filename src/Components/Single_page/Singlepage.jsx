@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import axios from "axios";
 import { imageUrl } from "../ContextData/Context";
 import { useParams } from "react-router-dom";
-import { Pagination } from 'antd';
+
 
 const Singlepage = () => {
   const {id} = useParams();
@@ -22,7 +22,7 @@ const Singlepage = () => {
       setmovie(res.data);
     };
     fetchData();
-  }, [page]);
+  }, []);
 
   useEffect(() => {
     const fetchCast = async () => {
@@ -37,6 +37,45 @@ const Singlepage = () => {
   return (
     <>
       <Header />
+      <div>
+        <div className="flex gap-4 mt-3 mb-4">
+          <div className="text-white">
+            <div className="flex gap-4 mb-4">
+              <div className=" h-full w-fit">
+                <div>
+                  <img
+                    src={`${baseUrl}${movie.poster_path}`}
+                    className="h-60 w-60"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div className=" h-full w-full">
+                <h1 className="text-6xl">{movie.original_title}</h1>
+                <h1 className="text-2xl text-blue-800">
+                  RATING:{movie.vote_average}
+                </h1>
+                <span className="text-xl bg-black w-fit pr-4">
+                  {movie.runtime}MIN
+                </span>
+                <span className="text-xl text-blue-800">{movie.tagline}</span>
+                <h1 className="text-xl">Release date :{movie.release_date}</h1>
+              </div>
+            </div>
+            <div>
+              <h1 className="text-3xl">OVERVIEW</h1>
+              <p>{movie.overview}</p>
+            </div>
+          </div>
+          <div className="h-96 w-full ">
+            <img
+              src={`${baseUrl}${movie.backdrop_path}`}
+              className="h-full w-full"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>  
       
       <div>
         <h1 className="text-4xl font-bold text-white mb-4">CAST</h1>
