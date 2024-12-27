@@ -31,7 +31,7 @@ const Search_page = () => {
   return (
     <>
     <Header />
-    <div className="grid grid-cols-4 gap-4 px-4 py-4 ">
+    <div className="grid grid-cols-3 gap-4 px-4 py-4 min-[900px]:grid-cols-4 max-[600px]:grid-cols-2 max-[350px]:grid-cols-1 ">
       {movies.map((movie,index) => (
         <Link to={`/single-page/${movie.id}`} className="mb-4 bg-white p-4 rounded-xl hover:bg-gray-300 border-4 hover:border-orange-500 " key={index}>
           <div >

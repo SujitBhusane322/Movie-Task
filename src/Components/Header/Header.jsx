@@ -15,11 +15,11 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex justify-around bg-gray-700 p-3 font-roboto">
+      <div className="flex justify-around bg-gray-700 p-3 font-roboto max-[840px]:flex-col ">
         <Link to={'/'} className="text-4xl text-orange-500">MovieDb</Link>
-        <div className="flex gap-5 items-center">
+        <div className="flex gap-5 items-center flex-wrap">
           <div>
-            <div className="flex gap-4 list-none text-2xl  ">
+            <div className="flex gap-4 list-none text-2xl flex-wrap">
               <Link to="/popular" className="hover:text-blue-600  text-white">
                 Popular
               </Link>

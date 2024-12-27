@@ -38,7 +38,7 @@ const Singlepage = () => {
     <>
       <Header />
       <div>
-        <div className="flex gap-4 mt-3 mb-4">
+        <div className="flex gap-4 mt-3 mb-4 max-[1170px]:flex-col-reverse">
           <div className="text-white">
             <div className="flex gap-4 mb-4">
               <div className=" h-full w-fit">
