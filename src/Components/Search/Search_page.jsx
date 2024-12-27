@@ -4,9 +4,11 @@ import axios from "axios";
 import { imageUrl } from "../ContextData/Context";
 import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Pagination } from 'antd';
 
 const Search_page = () => {
   const [params] = useSearchParams();
+  const [page, setpage] = useState(1)
   if(!params.get('q')) return;
 
     const [movies, setMovies] = useState([]);
@@ -16,7 +18,7 @@ const Search_page = () => {
       const fetchMovies = async () => {
         try {
           const res = await axios.get(
-            `https://api.themoviedb.org/3/search/movie?api_key=c45a857c193f6302f2b5061c3b85e743&language=en-US&page=1&query=${params.get('q')}`
+            `https://api.themoviedb.org/3/search/movie?api_key=c45a857c193f6302f2b5061c3b85e743&language=en-US&page=${page}&query=${params.get('q')}`
           );
           setMovies(res.data.results);
           console.log(res.data.results);
@@ -25,7 +27,7 @@ const Search_page = () => {
         }
       };
       fetchMovies();
-    }, [params]);
+    }, [params, page]);
   return (
     <>
     <Header />
@@ -45,6 +47,16 @@ const Search_page = () => {
         </Link>
       ))}
     </div>
+    <Pagination
+        onChange={(page) => {
+          setpage(page);
+        }}
+        defaultCurrent={1}
+        total={400}
+        align="center"
+        pageSize={20}
+        showSizeChanger={false}
+      />
   </>
   )
 }

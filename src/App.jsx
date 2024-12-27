@@ -5,10 +5,19 @@ import Top_rated from "./Components/Top_Rated/Top_rated";
 import Upcoming_movies from './Components/Upcoming-Movies/Upcoming_movies'
 import Singlepage from "./Components/Single_page/Singlepage";
 import Search_page from "./Components/Search/Search_page";
+import { ConfigProvider, theme } from "antd";
 
 const App = () => {
   return (
     <>
+    <ConfigProvider theme={{
+      algorithm: theme.darkAlgorithm,
+      components: {
+        Pagination: {
+          
+        }
+      }
+    }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -19,7 +28,7 @@ const App = () => {
           <Route path='/search' element={<Search_page/>}/>
         </Routes>
       </BrowserRouter>
-      
+      </ConfigProvider>
     </>
   );
 };
